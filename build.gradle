@@ -1,0 +1,81 @@
+plugins {
+    id 'eclipse'
+id 'idea'
+id 'net.minecraftforge.gradle' version '6.0.23'
+}
+
+version = '1.0.0'
+group = 'com.example.npcmod'
+archivesBaseName = 'npcmod'
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+minecraft {
+mappings channel: 'official', version: '1.20.1'
+    
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.levels', 'debug'
+            property 'forge.enabledGameTestNamespaces', 'npcmod'
+
+            mods {
+                npcmod {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        server {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.levels', 'debug'
+            property 'forge.enabledGameTestNamespaces', 'npcmod'
+
+            mods {
+                npcmod {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        gameTestServer {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.levels', 'debug'
+            property 'forge.enabledGameTestNamespaces', 'npcmod'
+
+            mods {
+                npcmod {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        data {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.levels', 'debug'
+            args '--mod', 'npcmod', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+
+            mods {
+                npcmod {
+                    source sourceSets.main
+                }
+            }
+        }
+    }
+}
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.2.0'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+apply from: 'mcreator.gradle'
