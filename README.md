@@ -11,3 +11,5 @@
 
 ### 你可以用命名牌命名女仆
 ![.](./tupian/3_1763103946590.jpg)
+在config目录下找到npcmod-common.toml文件
+可以填写你的ai的key
