@@ -1,0 +1,11 @@
+{
+  "npc_hurt": {
+    "sounds": [
+      {
+        "name": "npcmod:ao5",
+        "stream": false
+      }
+    ],
+    "subtitle": "subtitles.npcmod.npc_hurt"
+  }
+}
